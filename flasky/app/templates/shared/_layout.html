@@ -1,0 +1,61 @@
+{% extends "bootstrap/base.html" %}
+
+{%  block title %}Osteotomy{% endblock %}
+
+{% block head %}
+{{ super() }}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='pumuckl_01.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='pumuckl_01.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/site.css" />
+    <div class="container-fluid fluid-top">
+                <img src="{{ url_for('static', filename='img/Lebensfreude_logo_02_sw.png') }}"
+                     class="img-fluid" alt="Logo">
+
+    </div>
+{% endblock %}
+
+{% block navbar %}
+{{ super() }}
+    # TODO https://stackoverflow.com/questions/36505091/flask-nav-bootstrap-navbar-dynamic-construction-align-some-element-to-the-righ
+
+    {{ nav.top.render() }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<div class="container">
+{{ super() }}
+    <div class="container-fluid fluid-middle">
+        <div class="row content_main">
+            <div class="col-sm-2">
+                {% block page_content_left %}{% endblock %}
+            </div>
+            <div class="col-sm-8">
+                {% block page_content_middle %}{% endblock %}
+            </div>
+            <div class="col-sm-2">
+                {% block page_content_right %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+    <div class="container-fluid fluid-bottom">
+
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-7">
+                <footer>
+                    <p>Copyright &copy;2019-2020. butayama. All rights reserved.</p>
+                </footer>
+            </div>
+            <div class="col-sm-2">
+            </div>
+        </div>
+    </div>
+{{ moment.include_moment() }}
+{% endblock %}
