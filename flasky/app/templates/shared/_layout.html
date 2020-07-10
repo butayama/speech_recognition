@@ -2,6 +2,13 @@
 
 {%  block title %}Osteotomy{% endblock %}
 
+    <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+    <script type="text/javascript">
+    window.cookieconsent_options = {"message":"Diese Webseite verwendet Cookies, um Ihnen ein angenehmeres Surfen zu ermöglichen.","dismiss":"Bitte bestätigen!","learnMore":"Mehr Infos","link":null,"theme":"dark-top"};
+    </script>
+    <script type="text/javascript" src="//s3.amazonaws.com/cc.silktide.com/cookieconsent.latest.min.js"></script>
+    <!-- End Cookie Consent plugin -->
+
 {% block head %}
 {{ super() }}
     <link rel="shortcut icon" href="{{ url_for('static', filename='pumuckl_01.ico') }}" type="image/x-icon">
@@ -16,10 +23,11 @@
 
 {% block navbar %}
 {{ super() }}
-    # TODO https://stackoverflow.com/questions/36505091/flask-nav-bootstrap-navbar-dynamic-construction-align-some-element-to-the-righ
-
     {{ nav.top.render() }}
 {% endblock %}
+
+{#{%  block content_header %}#}
+{#{%  endblock %}#}
 
 {% block content %}
 {{ super() }}
@@ -27,14 +35,8 @@
 {{ super() }}
     <div class="container-fluid fluid-middle">
         <div class="row content_main">
-            <div class="col-sm-2">
-                {% block page_content_left %}{% endblock %}
-            </div>
-            <div class="col-sm-8">
+            <div class="col-sm-10">
                 {% block page_content_middle %}{% endblock %}
-            </div>
-            <div class="col-sm-2">
-                {% block page_content_right %}{% endblock %}
             </div>
         </div>
     </div>
@@ -44,18 +46,14 @@
 {% block scripts %}
 {{ super() }}
     <div class="container-fluid fluid-bottom">
-
-        <div class="row">
-            <div class="col-sm-3">
-            </div>
-            <div class="col-sm-7">
-                <footer>
-                    <p>Copyright &copy;2019-2020. butayama. All rights reserved.</p>
-                </footer>
-            </div>
-            <div class="col-sm-2">
-            </div>
-        </div>
+        </footer>
+            <p class="copyright">Copyright (C) 2020 | Uwe Schweinsberg | yetigo42+osteotomy@gmail.com</p>
+            <p><a href="https://www.gnu.org/licenses/gpl-3.0.html"target="_blank" rel="nofollow">
+                GNU GENERAL PUBLIC LICENSE Version 3</a></p>
+            <p class="small">This program comes with ABSOLUTELY NO WARRANTY;
+            This is free software, and you are welcome to redistribute it
+               under certain conditions.</p>
+        </footer>
     </div>
 {{ moment.include_moment() }}
 {% endblock %}
