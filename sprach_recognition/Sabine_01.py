@@ -98,7 +98,7 @@ def silence_based_conversion(path="alice-medium.wav"):
 
 
 if __name__ == '__main__':
-    path = 'sabine.wav'
+    path = '2509_audio-CONVERTED.wav'
     # path = input('Enter the audio file path:  ')
     silence_based_conversion(path)
 

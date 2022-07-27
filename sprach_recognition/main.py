@@ -25,11 +25,11 @@ def silence_based_conversion(path="alice-medium.wav"):
                               # or 500 ms. adjust this value based on user
                               # requirement. if the speaker stays silent for
                               # longer, increase this value. else, decrease it.
-                              min_silence_len=600,
+                              min_silence_len=1500,
 
                               # consider it silent if quieter than -30 dBFS
                               # adjust this per requirement
-                              silence_thresh=-50
+                              silence_thresh=-30
                               )
 
     # create a directory to store the audio chunks.
@@ -98,7 +98,8 @@ def silence_based_conversion(path="alice-medium.wav"):
 
 
 if __name__ == '__main__':
-    path = 'sabine.wav'
-    # path = input('Enter the audio file path:  ')
-    silence_based_conversion(path)
-
+    directory = 'wav_files'
+    for path in os.listdir(directory):
+        # path = '2509_audio-CONVERTED.wav'
+        # # path = input('Enter the audio file path:  ')
+        silence_based_conversion(os.path.normpath(directory + '/' + path))
