@@ -1,7 +1,7 @@
 import random
 import time
 
-import SpeechRecognition as sr
+import speech_recognition as sr
 
 
 def recognize_speech_from_mic(recognizer, microphone):
