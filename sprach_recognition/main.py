@@ -31,7 +31,7 @@ def silence_based_conversion(wav_path, txt_path, chunk_dir):
 
                               # consider it silent if quieter than -30 dBFS
                               # adjust this per requirement
-                              silence_thresh=-10
+                              silence_thresh=-42
                               )
 
     # create a directory to store the audio chunks.
