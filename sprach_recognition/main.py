@@ -58,7 +58,7 @@ def silence_based_conversion(wav_path, txt_path, chunk_dir):
 
         # export audio chunk and save it in
         # the current directory.
-        print("saving chunk{0}.wav".format(i))
+        print(f"saving chunk{0}.wav")
         # specify the bitrate to be 192 k
         audio_chunk.export("./chunk{0}.wav".format(i), bitrate='192k', format="wav")
 
@@ -100,11 +100,12 @@ def silence_based_conversion(wav_path, txt_path, chunk_dir):
 
     for chunk_file in os.listdir(chunk_dir):
         chunk_file_path = os.path.join(chunk_dir, chunk_file)
+        print(f"deleting {chunk_file_path}")
         os.remove(chunk_file_path)
 
 
 if __name__ == '__main__':
-    wav_directory = 'test_wav_files'
+    wav_directory = 'wav_files'
     txt_directory = 'txt_files'
     chunk_directory = 'audio_chunks'
     for path in os.listdir(wav_directory):
