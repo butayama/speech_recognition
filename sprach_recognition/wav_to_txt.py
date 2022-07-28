@@ -15,7 +15,7 @@ def process_chunks(chunk_dir='audio_chunks', filename='u_01.wav'):
     file = filename
     # open a file where we will concatenate
     # and store the recognized text
-    fh = open("recognized.txt", "w+")
+    fh = open("recognized_01.txt", "w+")
 
     # create a speech recognition object
     r = sr.Recognizer()

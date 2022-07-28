@@ -16,7 +16,7 @@ def silence_based_conversion(path="alice-medium.wav"):
 
     # open a file where we will concatenate
     # and store the recognized text
-    fh = open("recognized.txt", "w+")
+    fh = open("recognized_01.txt", "w+")
 
     # split track where silence is 0.5 seconds
     # or more and get chunks

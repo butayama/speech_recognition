@@ -9,14 +9,14 @@ from pydub.silence import split_on_silence
 
 # a function that splits the audio file into chunks
 # and applies speech recognition
-def silence_based_conversion(path="alice-medium.wav"):
+def silence_based_conversion(wav_path, txt_path, chunk_dir):
     # open the audio file stored in
     # the local system as a wav file.
-    song = AudioSegment.from_wav(path)
+    song = AudioSegment.from_wav(wav_path)
 
     # open a file where we will concatenate
     # and store the recognized text
-    fh = open("recognized.txt", "w+")
+    fh = open(txt_path, "w+")
 
     # split track where silence is 0.5 seconds
     # or more and get chunks
@@ -29,18 +29,18 @@ def silence_based_conversion(path="alice-medium.wav"):
 
                               # consider it silent if quieter than -30 dBFS
                               # adjust this per requirement
-                              silence_thresh=-30
+                              silence_thresh=-40
                               )
 
     # create a directory to store the audio chunks.
     try:
-        os.mkdir('audio_chunks')
-    except(FileExistsError):
+        os.mkdir(chunk_dir)
+    except FileExistsError:
         pass
 
     # move into the directory to
     # store the audio files.
-    os.chdir('audio_chunks')
+    os.chdir(chunk_dir)
 
     i = 0
     # process each chunk
@@ -96,10 +96,16 @@ def silence_based_conversion(path="alice-medium.wav"):
 
     os.chdir('..')
 
+    for chunk_file in os.listdir(chunk_dir):
+        chunk_file_path = os.path.join(chunk_dir, chunk_file)
+        os.remove(chunk_file_path)
+
 
 if __name__ == '__main__':
-    directory = 'wav_files'
+    directory = 'test_wav_files'
+    chunk_directory = 'audio_chunks'
     for path in os.listdir(directory):
-        # path = '2509_audio-CONVERTED.wav'
-        # # path = input('Enter the audio file path:  ')
-        silence_based_conversion(os.path.normpath(directory + '/' + path))
+        wav_name = os.path.join(directory, path)
+        # wav_name = os.path.join(directory + '/' + path)
+        txt_name = os.path.splitext(wav_name)[0] + '.txt'
+        silence_based_conversion(wav_name, txt_name, chunk_directory)
