@@ -27,11 +27,11 @@ def silence_based_conversion(wav_path, txt_path, chunk_dir):
                               # or 500 ms. adjust this value based on user
                               # requirement. if the speaker stays silent for
                               # longer, increase this value. else, decrease it.
-                              min_silence_len=1500,
+                              min_silence_len=800,
 
                               # consider it silent if quieter than -30 dBFS
                               # adjust this per requirement
-                              silence_thresh=-40
+                              silence_thresh=-10
                               )
 
     # create a directory to store the audio chunks.
@@ -85,7 +85,7 @@ def silence_based_conversion(wav_path, txt_path, chunk_dir):
             # try converting it to text
             rec = r.recognize_google(audio_listened, language="de-DE")
             # write the output to the file.
-            fh.write(rec + ". ")
+            fh.write(rec + "\n")
 
         # catch any errors.
         except sr.UnknownValueError:
