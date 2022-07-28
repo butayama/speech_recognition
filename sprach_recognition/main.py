@@ -12,6 +12,8 @@ from pydub.silence import split_on_silence
 def silence_based_conversion(wav_path, txt_path, chunk_dir):
     # open the audio file stored in
     # the local system as a wav file.
+
+    print(f"processing {wav_path}")
     song = AudioSegment.from_wav(wav_path)
 
     # open a file where we will concatenate
@@ -102,10 +104,11 @@ def silence_based_conversion(wav_path, txt_path, chunk_dir):
 
 
 if __name__ == '__main__':
-    directory = 'test_wav_files'
+    wav_directory = 'test_wav_files'
+    txt_directory = 'txt_files'
     chunk_directory = 'audio_chunks'
-    for path in os.listdir(directory):
-        wav_name = os.path.join(directory, path)
-        # wav_name = os.path.join(directory + '/' + path)
-        txt_name = os.path.splitext(wav_name)[0] + '.txt'
+    for path in os.listdir(wav_directory):
+        file_name = os.path.splitext(path)
+        wav_name = os.path.join(wav_directory, path)
+        txt_name = os.path.join(txt_directory, file_name[0] + '.txt')
         silence_based_conversion(wav_name, txt_name, chunk_directory)
